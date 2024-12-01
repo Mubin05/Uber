@@ -1,7 +1,8 @@
 const captainModel = require('../models/captain.model');
 const captainService = require('../services/captain.service');
-const blackListTokenModel = require('../models/blackListToken.model');
 const { validationResult } = require('express-validator');
+const blackListTokenModel = require('../models/blackListToken.model');
+
 
 
 module.exports.registerCaptain = async (req, res, next) => {
@@ -45,9 +46,9 @@ module.exports.loginCaptain = async (req, res, next) => {
         return res.status(400).json({ errors: errors.array() });
     }
 
-    const { email, password } = req.body;
+    const {email,password} = req.body;
 
-    const captain = await captainModel.findOne({ email }).select('+password');
+    const captain = await captainModel.findOne({email}).select('+password');
 
     if (!captain) {
         return res.status(401).json({ message: 'Invalid email or password' });
@@ -60,9 +61,7 @@ module.exports.loginCaptain = async (req, res, next) => {
     }
 
     const token = captain.generateAuthToken();
-
     res.cookie('token', token);
-
     res.status(200).json({ token, captain });
 }
 
