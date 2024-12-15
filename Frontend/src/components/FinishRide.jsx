@@ -8,7 +8,7 @@ const FinishRide = (props) => {
         props.setfinishRidePanel(false)
       }}><i className="text-3xl text-gray-200 ri-arrow-down-wide-line"></i></h5>
       <h3 className='text-2xl font-semibold mb-5'>Finish this Ride</h3>
-      <div className='flex items-center justify-between p-3bg-gray-50 rounded-lg  mt-4'>
+      <div className='flex items-center justify-between p-4 bg-yellow-400 border-2 rounded-lg  mt-4'>
         <div className='flex items-center gap-3  '>
           <img className='h-12 rounded-full object-cover w-12' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTbqkj7uqS4RFpZZfPRu50xIJY9gss2dqAOg&s" alt="" />
           <h2 className='text-xl font-medium'>Harsh Patel</h2>
