@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { LoadScript, GoogleMap, Marker } from '@react-google-maps/api'
+import React, { useState, useEffect } from 'react';
+import Map, { Marker } from 'react-map-gl';
 
 const containerStyle = {
     width: '100%',
@@ -12,7 +12,7 @@ const center = {
 };
 
 const LiveTracking = () => {
-    const [ currentPosition, setCurrentPosition ] = useState(center);
+    const [currentPosition, setCurrentPosition] = useState(center);
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition((position) => {
@@ -54,16 +54,19 @@ const LiveTracking = () => {
     }, []);
 
     return (
-        <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
-            <GoogleMap
-                mapContainerStyle={containerStyle}
-                center={currentPosition}
-                zoom={15}
-            >
-                <Marker position={currentPosition} />
-            </GoogleMap>
-        </LoadScript>
-    )
-}
+        <Map
+            initialViewState={{
+                longitude: currentPosition.lng,
+                latitude: currentPosition.lat,
+                zoom: 15
+            }}
+            style={containerStyle}
+            mapStyle="mapbox://styles/mapbox/streets-v11"
+            mapboxAccessToken={import.meta.env.VITE_MAPBOX_API_KEY}
+        >
+            <Marker longitude={currentPosition.lng} latitude={currentPosition.lat} />
+        </Map>
+    );
+};
 
-export default LiveTracking
+export default LiveTracking;
