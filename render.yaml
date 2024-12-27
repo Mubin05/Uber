@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: backend
+    env: node
+    plan: free
+    buildCommand: cd Backend && npm install
+    startCommand: cd Backend && node server.js
+
+  - type: web
+    name: frontend
+    env: node
+    plan: free
+    buildCommand: cd Frontend && npm install && npm run build
+    startCommand: cd Frontend && npm run preview
