@@ -14,7 +14,8 @@ import CaptainLogout from './pages/CaptainLogout'
 import Riding from './pages/Riding'
 import CaptainRiding from './pages/CaptainRiding'
 import 'remixicon/fonts/remixicon.css'
-
+import 'mapbox-gl/dist/mapbox-gl.css';
+import ReactMapGl from "react-map-gl"
 const App = () => {
 
   return (
